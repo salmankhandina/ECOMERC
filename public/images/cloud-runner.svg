@@ -1,0 +1,9 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="480" fill="#F4EADF"/>
+  <circle cx="528" cy="92" r="64" fill="#E1C3A8"/>
+  <path d="M116 314C116 314 176 250 262 250C335 250 384 292 472 292C518 292 551 276 551 276V346H116V314Z" fill="#1C4C56"/>
+  <path d="M116 318H514C536 318 552 334 552 356C552 378 536 394 514 394H174C142 394 116 368 116 336V318Z" fill="#DC6330"/>
+  <path d="M404 334H510C523 334 534 345 534 358C534 371 523 382 510 382H404V334Z" fill="#FAE7D7"/>
+  <text x="52" y="94" fill="#1D1813" font-family="Arial, sans-serif" font-size="42" font-weight="700">Cloud Runner</text>
+  <text x="54" y="134" fill="#6B5D4F" font-family="Arial, sans-serif" font-size="22">Performance sneaker</text>
+</svg>

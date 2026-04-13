@@ -1,0 +1,8 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="480" fill="#F6EEE4"/>
+  <path d="M184 124L254 76H386L456 124L412 196H228L184 124Z" fill="#154C4F"/>
+  <path d="M228 196H412V386H228V196Z" fill="#F4FBFB"/>
+  <path d="M278 76C278 99.196 296.804 118 320 118C343.196 118 362 99.196 362 76" stroke="#C25A24" stroke-width="16"/>
+  <text x="88" y="404" fill="#1D1813" font-family="Arial, sans-serif" font-size="42" font-weight="700">Harbor Tee</text>
+  <text x="90" y="438" fill="#6B5D4F" font-family="Arial, sans-serif" font-size="22">Soft cotton essential</text>
+</svg>

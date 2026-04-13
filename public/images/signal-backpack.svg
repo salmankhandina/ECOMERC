@@ -1,0 +1,9 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="480" fill="#F7F0E8"/>
+  <rect x="188" y="112" width="264" height="268" rx="40" fill="#154C4F"/>
+  <rect x="224" y="168" width="192" height="130" rx="18" fill="#F6E9DA"/>
+  <path d="M248 112V92C248 62 272 38 302 38H338C368 38 392 62 392 92V112" stroke="#C25A24" stroke-width="18"/>
+  <rect x="278" y="198" width="84" height="22" rx="11" fill="#C25A24"/>
+  <text x="54" y="404" fill="#1D1813" font-family="Arial, sans-serif" font-size="42" font-weight="700">Signal Backpack</text>
+  <text x="56" y="438" fill="#6B5D4F" font-family="Arial, sans-serif" font-size="22">Commuter carry</text>
+</svg>

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: storefront-config
+data:
+  PORT: "3000"
+  DB_HOST: mysql
+  DB_PORT: "3306"
+  DB_NAME: storefront
+  DB_CONNECTION_LIMIT: "10"
+  INIT_SCHEMA: "true"
