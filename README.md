@@ -20,7 +20,7 @@ This repository contains a full functional mini storefront built with Node.js, E
 - Runtime: Docker Compose
 - Monitoring: Prometheus, Grafana
 - CI/CD: GitHub Actions
-- Registry target: GitHub Container Registry
+- Registry target: Docker Hub
 
 ## Run with Docker
 
@@ -32,18 +32,14 @@ The app will be available at `http://localhost:3000`.
 
 ## Run locally
 
-1. Create a MySQL database and app user:
+1. Start only the MySQL container for local backend development:
 
-```sql
-CREATE DATABASE IF NOT EXISTS storefront;
-CREATE USER IF NOT EXISTS 'storefront'@'localhost' IDENTIFIED BY 'storefront';
-CREATE USER IF NOT EXISTS 'storefront'@'127.0.0.1' IDENTIFIED BY 'storefront';
-GRANT ALL PRIVILEGES ON storefront.* TO 'storefront'@'localhost';
-GRANT ALL PRIVILEGES ON storefront.* TO 'storefront'@'127.0.0.1';
-FLUSH PRIVILEGES;
+```bash
+docker compose up -d mysql
 ```
 
-2. Copy `.env.example` to `.env` and adjust credentials if needed.
+2. The local app is already configured to use that container on `127.0.0.1:3307`.
+
 3. Install dependencies:
 
 ```bash
@@ -54,6 +50,19 @@ npm install
 
 ```bash
 npm run dev
+```
+
+5. Open `http://localhost:3000`.
+
+If you want to use your own local MySQL server instead of Docker, first create a MySQL database and app user:
+
+```sql
+CREATE DATABASE IF NOT EXISTS storefront;
+CREATE USER IF NOT EXISTS 'storefront'@'localhost' IDENTIFIED BY 'storefront';
+CREATE USER IF NOT EXISTS 'storefront'@'127.0.0.1' IDENTIFIED BY 'storefront';
+GRANT ALL PRIVILEGES ON storefront.* TO 'storefront'@'localhost';
+GRANT ALL PRIVILEGES ON storefront.* TO 'storefront'@'127.0.0.1';
+FLUSH PRIVILEGES;
 ```
 
 The app auto-initializes the schema and sample products on startup when `INIT_SCHEMA=true`.
@@ -76,7 +85,7 @@ This repository is structured around the workflow:
 That maps to the implementation here as:
 
 - Code changes are validated in GitHub Actions
-- Docker images are built and pushed to `GHCR`
+- Docker images are built and pushed to Docker Hub
 - Kubernetes manifests deploy the app and MySQL
 - Prometheus scrapes app metrics from `/metrics`
 - Grafana visualizes request rate, latency, orders, and revenue
@@ -165,16 +174,18 @@ Pipeline stages:
 - install dependencies
 - run Node syntax validation
 - build the Docker image
-- push the image to `ghcr.io`
+- push the image to Docker Hub
 - apply Kubernetes manifests
 - update the running deployment image
 - wait for rollout completion
 
-To enable deployment from GitHub Actions, add this repository secret:
+To enable image push and deployment from GitHub Actions, add these repository secrets:
 
+- `DOCKERHUB_USERNAME`: your Docker Hub username
+- `DOCKERHUB_TOKEN`: Docker Hub access token
 - `KUBE_CONFIG_DATA`: base64-encoded kubeconfig for the target cluster
 
-The workflow uses `GHCR` through the built-in `GITHUB_TOKEN`.
+The workflow tags images as `docker.io/<DOCKERHUB_USERNAME>/<repo-name>:sha-<commit>` and `:latest`.
 
 ## Rollback commands
 
